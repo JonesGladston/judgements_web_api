@@ -12,22 +12,22 @@ namespace webApiApp.Controllers
         public CaseController(judgement_dbContext context)
         {
             _context = context;
-            if (_context.Cases.Count() == 0)
+            if (_context.cases.Count() == 0)
             {
-                _context.Cases.Add(new Cases { CourtType = "new_type" }); _context.SaveChanges();
+                _context.cases.Add(new Cases { CourtType = "new_type" }); _context.SaveChanges();
             }
         }
 
         [HttpGet]
         public ActionResult<List<Cases>> GetAll()
         {
-            return _context.Cases.ToList();
+            return _context.cases.ToList();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Cases> GetById(int id)
+        public ActionResult<Cases> GetById(long id)
         {
-            var item = _context.Cases.Find(id);
+            var item = _context.cases.Find(id);
             if (item == null)
             {
                 return NotFound();

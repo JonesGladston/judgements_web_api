@@ -15,10 +15,11 @@
 
 
   <ItemGroup>
-    <Folder Include="Models1\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20200228130834_initial.cs" />
+    <Compile Remove="Models\ApplicationDbContext.cs" />
+    <Compile Remove="Models\Case.cs" />
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ namespace webApiApp.Models
         }
 
         public virtual DbSet<ArInternalMetadata> ArInternalMetadata { get; set; }
-        public virtual DbSet<Cases> Cases { get; set; }
+        public virtual DbSet<Cases> cases { get; set; }
         public virtual DbSet<Defendants> Defendants { get; set; }
         public virtual DbSet<Plaintiffs> Plaintiffs { get; set; }
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }

@@ -4,28 +4,28 @@ using System.Linq;
 using webApiApp.Models;
 namespace webApiApp.Controllers
 {
-    [Route("Defendant")]
+    [Route("Defendants")]
     [ApiController]
     public class DefendantController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public DefendantController(ApplicationDbContext context)
+        private readonly judgement_dbContext _context;
+        public DefendantController(judgement_dbContext context)
         {
             _context = context;
             if (_context.Defendants.Count() == 0)
             {
-                _context.Defendants.Add(new Case { court_type = "new_type" }); _context.SaveChanges();
+                _context.Defendants.Add(new Defendants { FirstName = "tester" }); _context.SaveChanges();
             }
         }
 
         [HttpGet]
-        public ActionResult<List<Case>> GetAll()
+        public ActionResult<List<Defendants>> GetAll()
         {
             return _context.Defendants.ToList();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Case> GetById(int id)
+        public ActionResult<Defendants> GetById(long id)
         {
             var item = _context.Defendants.Find(id);
             if (item == null)
