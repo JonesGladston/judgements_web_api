@@ -21,5 +21,7 @@
     <Compile Remove="Migrations\20200228130834_initial.cs" />
     <Compile Remove="Models\ApplicationDbContext.cs" />
     <Compile Remove="Models\Case.cs" />
+    <Compile Remove="Models1\ApplicationDbContext.cs" />
+    <Compile Remove="Models1\Case.cs" />
   </ItemGroup>
 </Project>

@@ -5360,7 +5360,7 @@
       "outputPath": "/Users/jones/Projects/webApiApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jones/.nuget/NuGet/NuGet.Config"
+        "/Users/jones/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
