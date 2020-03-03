@@ -1,6 +1,3 @@
-/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.MvcApplicationPartsAssemblyInfo.cache
-/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.AssemblyInfoInputs.cache
-/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.AssemblyInfo.cs
 /Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/appsettings.json
 /Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
@@ -30,10 +27,12 @@
 /Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/Npgsql.dll
 /Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
+/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.MvcApplicationPartsAssemblyInfo.cache
+/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.AssemblyInfoInputs.cache
+/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.AssemblyInfo.cs
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.RazorTargetAssemblyInfo.cache
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.csproj.CopyComplete
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/staticwebassets/webApiApp.StaticWebAssets.Manifest.cache
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/staticwebassets/webApiApp.StaticWebAssets.xml
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.dll
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.pdb
-/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.csprojAssemblyReference.cache
