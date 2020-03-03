@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using webApiApp.Models;
 namespace webApiApp.Controllers
 {
@@ -33,6 +34,40 @@ namespace webApiApp.Controllers
                 return NotFound();
             }
             return item;
+        }
+
+        [HttpPost]
+        public ActionResult<Plaintiffs> Create(Plaintiffs newPlaintiff)
+        {
+            _context.Plaintiffs.Add(newPlaintiff);
+            _context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Cases> EditCase(long id, Plaintiffs editPlaintiff)
+        {
+            var editablePlaintiff = _context.Plaintiffs.Find(id);
+            _context.Plaintiffs.Update(editablePlaintiff).CurrentValues.SetValues(editPlaintiff);
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Plaintiffs>> DeletePlaintiff(long id)
+        {
+            var deletablePlaintiff = await _context.Plaintiffs.FindAsync(id);
+            if (deletablePlaintiff == null)
+            {
+                return NotFound();
+            }
+
+            _context.Plaintiffs.Remove(deletablePlaintiff);
+            await _context.SaveChangesAsync();
+
+            return deletablePlaintiff;
         }
     }
 

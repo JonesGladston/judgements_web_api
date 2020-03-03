@@ -57,18 +57,18 @@ namespace webApiApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Cases>> DeleteTodoItem(long id)
+        public async Task<ActionResult<Cases>> DeleteCase(long id)
         {
-            var todoItem = await _context.cases.FindAsync(id);
-            if (todoItem == null)
+            var deletableCase = await _context.cases.FindAsync(id);
+            if (deletableCase == null)
             {
                 return NotFound();
             }
 
-            _context.cases.Remove(todoItem);
+            _context.cases.Remove(deletableCase);
             await _context.SaveChangesAsync();
 
-            return todoItem;
+            return deletableCase;
         }
     }
 
