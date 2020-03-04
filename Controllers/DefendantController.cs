@@ -13,23 +13,14 @@ namespace webApiApp.Controllers
         public DefendantController(judgement_dbContext context)
         {
             _context = context;
-            if (_context.Defendants.Count() == 0)
-            {
-                _context.Defendants.Add(new Defendants { FirstName = "tester" }); _context.SaveChanges();
-            }
         }
 
         [HttpGet]
-        public ActionResult<List<Defendants>> GetAll()
+        public ActionResult<List<Defendants>> GetDefendants(int pageNumber = 1, int pageSize = 10)
         {
-            return _context.Defendants.ToList();
+            return _context.Defendants.OrderBy(defendant => defendant.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         }
 
-        [HttpGet("/defendants_100")]
-        public ActionResult<List<Defendants>> GetLimited()
-        {
-            return _context.Defendants.Where(x => x.Id < 100).ToList();
-        }
 
         [HttpGet("{id}")]
         public ActionResult<Defendants> GetById(long id)

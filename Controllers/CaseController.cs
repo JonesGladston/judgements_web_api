@@ -21,15 +21,9 @@ namespace webApiApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Cases>> GetAll()
+        public ActionResult<List<Cases>> GetCases(int pageNumber = 1, int pageSize = 10)
         {
-            return _context.cases.ToList();
-        }
-
-        [HttpGet("/cases_100")]
-        public ActionResult<List<Cases>> GetLimited()
-        {
-            return _context.cases.Where(x => x.Id < 100).ToList();
+            return _context.cases.OrderBy(Case => Case.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         }
 
         [HttpGet("{id}")]

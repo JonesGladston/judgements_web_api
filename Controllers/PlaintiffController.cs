@@ -13,22 +13,12 @@ namespace webApiApp.Controllers
         public PlaintiffController(judgement_dbContext context)
         {
             _context = context;
-            if (_context.Plaintiffs.Count() == 0)
-            {
-                _context.Plaintiffs.Add(new Plaintiffs { FirstName = "tester" }); _context.SaveChanges();
-            }
         }
 
         [HttpGet]
-        public ActionResult<List<Plaintiffs>> GetAll()
+        public ActionResult<List<Plaintiffs>> GetPlaintiffs(int pageNumber = 1, int pageSize = 10)
         {
-            return _context.Plaintiffs.ToList();
-        }
-
-        [HttpGet("/Plaintiffs_100")]
-        public ActionResult<List<Plaintiffs>> GetLimited()
-        {
-            return _context.Plaintiffs.Where(x => x.Id < 100).ToList();
+            return _context.Plaintiffs.OrderBy(plaintiff => plaintiff.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         }
 
         [HttpGet("{id}")]
