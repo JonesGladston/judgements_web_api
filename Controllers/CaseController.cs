@@ -26,6 +26,12 @@ namespace webApiApp.Controllers
             return _context.cases.ToList();
         }
 
+        [HttpGet("/cases_100")]
+        public ActionResult<List<Cases>> GetLimited()
+        {
+            return _context.cases.Where(x => x.Id < 100).ToList();
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Cases> GetById(long id)
         {

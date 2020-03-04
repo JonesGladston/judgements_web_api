@@ -25,6 +25,12 @@ namespace webApiApp.Controllers
             return _context.Plaintiffs.ToList();
         }
 
+        [HttpGet("/Plaintiffs_100")]
+        public ActionResult<List<Plaintiffs>> GetLimited()
+        {
+            return _context.Plaintiffs.Where(x => x.Id < 100).ToList();
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Plaintiffs> GetById(long id)
         {

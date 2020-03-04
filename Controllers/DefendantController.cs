@@ -25,6 +25,12 @@ namespace webApiApp.Controllers
             return _context.Defendants.ToList();
         }
 
+        [HttpGet("/defendants_100")]
+        public ActionResult<List<Defendants>> GetLimited()
+        {
+            return _context.Defendants.Where(x => x.Id < 100).ToList();
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Defendants> GetById(long id)
         {
