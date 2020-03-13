@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using webApiApp.Models;
+using Newtonsoft.Json;
+
 namespace webApiApp.Controllers
 {
     [Route("Cases")]
@@ -20,10 +22,22 @@ namespace webApiApp.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult<List<Cases>> GetCases(int pageNumber = 1, int pageSize = 10)
+        public partial class CaseData
         {
-            return _context.cases.OrderBy(Case => Case.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            public long TotalCount { get; set; }
+
+            public List<Cases> Cases { get; set; }
+        }
+
+        [HttpGet]
+        public ActionResult<CaseData> GetCases(int pageNumber = 1, int pageSize = 10)
+        {
+            var resultData = new CaseData
+            {
+                TotalCount = _context.cases.Count(),
+                Cases = _context.cases.OrderBy(Case => Case.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+            };
+            return resultData;
         }
 
         [HttpGet("{id}")]

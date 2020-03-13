@@ -36,3 +36,5 @@
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/staticwebassets/webApiApp.StaticWebAssets.xml
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.dll
 /Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.pdb
+/Users/jones/Projects/webApiApp/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/jones/Projects/webApiApp/obj/Debug/netcoreapp3.1/webApiApp.csprojAssemblyReference.cache
