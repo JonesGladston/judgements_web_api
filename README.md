@@ -35,5 +35,20 @@ PUT '/cases/:id'
 DELETE '/cases/:id'
 ```
 
+2. Sorting
+
+To get a sorted list of response you have to send the field to be sorted with the query.
+
+```
+GET 'cases?pageNumber=1&sort=Judge_asc'
+```
+
+```
+GET 'cases?pageNumber=1&sort=Judge_dsc'
+```
+
+'asc' suffix for ascending and 'dsc' suffix for descending
+
+
 
 There are similar endpoints for Plaintiffs and Defendants

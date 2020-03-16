@@ -30,12 +30,44 @@ namespace webApiApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<CaseData> GetCases(int pageNumber = 1, int pageSize = 10)
+        public ActionResult<CaseData> GetCases(string sort, int pageNumber = 1, int pageSize = 10)
         {
+            IOrderedQueryable<Cases> totalCases = _context.cases.OrderBy(Case => Case.Id);
+            if (sort != null)
+            {
+                switch (sort)
+                {
+                    case "CaseNo_asc":
+                        totalCases = _context.cases.OrderBy(Case => Case.CaseNo);
+                        break;
+                    case "CaseNo_dsc":
+                        totalCases = _context.cases.OrderByDescending(Case => Case.CaseNo);
+                        break;
+                    case "CaseType_asc":
+                        totalCases = _context.cases.OrderBy(Case => Case.CaseType);
+                        break;
+                    case "CaseType_dsc":
+                        totalCases = _context.cases.OrderByDescending(Case => Case.CaseType);
+                        break;
+                    case "FillingDate_asc":
+                        totalCases = _context.cases.OrderBy(Case => Case.FillingDate);
+                        break;
+                    case "FillingDate_dsc":
+                        totalCases = _context.cases.OrderByDescending(Case => Case.FillingDate);
+                        break;
+                    case "Judge_asc":
+                        totalCases = _context.cases.OrderBy(Case => Case.Judge);
+                        break;
+                    case "Judge_dsc":
+                        totalCases = _context.cases.OrderByDescending(Case => Case.Judge);
+                        break;
+                }
+            }
+            
             var resultData = new CaseData
             {
                 TotalCount = _context.cases.Count(),
-                Cases = _context.cases.OrderBy(Case => Case.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+                Cases = totalCases.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
             };
             return resultData;
         }
