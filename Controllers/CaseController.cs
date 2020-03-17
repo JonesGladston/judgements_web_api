@@ -22,51 +22,28 @@ namespace webApiApp.Controllers
             }
         }
 
-        public partial class CaseData
-        {
-            public long TotalCount { get; set; }
-
-            public List<Cases> Cases { get; set; }
-        }
 
         [HttpGet]
-        public ActionResult<CaseData> GetCases(string sort, int pageNumber = 1, int pageSize = 10)
+        public ActionResult<CaseData> GetCases(string search, string sort, int pageNumber = 1, int pageSize = 10)
         {
-            IOrderedQueryable<Cases> totalCases = _context.cases.OrderBy(Case => Case.Id);
-            if (sort != null)
+            var caseDbSet = _context.cases;
+            IQueryable<Cases> totalCases = caseDbSet.OrderBy(Case => Case.Id);
+
+            if (search != null)
             {
-                switch (sort)
-                {
-                    case "CaseNo_asc":
-                        totalCases = _context.cases.OrderBy(Case => Case.CaseNo);
-                        break;
-                    case "CaseNo_dsc":
-                        totalCases = _context.cases.OrderByDescending(Case => Case.CaseNo);
-                        break;
-                    case "CaseType_asc":
-                        totalCases = _context.cases.OrderBy(Case => Case.CaseType);
-                        break;
-                    case "CaseType_dsc":
-                        totalCases = _context.cases.OrderByDescending(Case => Case.CaseType);
-                        break;
-                    case "FillingDate_asc":
-                        totalCases = _context.cases.OrderBy(Case => Case.FillingDate);
-                        break;
-                    case "FillingDate_dsc":
-                        totalCases = _context.cases.OrderByDescending(Case => Case.FillingDate);
-                        break;
-                    case "Judge_asc":
-                        totalCases = _context.cases.OrderBy(Case => Case.Judge);
-                        break;
-                    case "Judge_dsc":
-                        totalCases = _context.cases.OrderByDescending(Case => Case.Judge);
-                        break;
-                }
+                totalCases = caseDbSet.Where(a => a.CaseNo.Contains(search) || a.CaseType.Contains(search) || a.FillingDate.ToString().Contains(search) || a.Judge.Contains(search))
+                    .OrderBy(Case => Case.Id);
             }
+
+
+            SortCases sortCases = new SortCases();
+
+            if (sort != null)
+                totalCases = sortCases.Sort(sort, totalCases);
             
             var resultData = new CaseData
             {
-                TotalCount = _context.cases.Count(),
+                TotalCount = caseDbSet.Count(),
                 Cases = totalCases.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
             };
             return resultData;
