@@ -5389,19 +5389,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/jones/.nuget/packages/": {}
+    "/Users/imran/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jones/Projects/webApiApp/webApiApp.csproj",
+      "projectUniqueName": "/Users/imran/personal/projects/temp/judgements_web_api/webApiApp.csproj",
       "projectName": "webApiApp",
-      "projectPath": "/Users/jones/Projects/webApiApp/webApiApp.csproj",
-      "packagesPath": "/Users/jones/.nuget/packages/",
-      "outputPath": "/Users/jones/Projects/webApiApp/obj/",
+      "projectPath": "/Users/imran/personal/projects/temp/judgements_web_api/webApiApp.csproj",
+      "packagesPath": "/Users/imran/.nuget/packages/",
+      "outputPath": "/Users/imran/personal/projects/temp/judgements_web_api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/jones/.config/NuGet/NuGet.Config"
+        "/Users/imran/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

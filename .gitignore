@@ -3,4 +3,5 @@
 .vs/
 .env
 obj/
+obj/Debug/*
 bin/
