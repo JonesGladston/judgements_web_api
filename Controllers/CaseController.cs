@@ -69,13 +69,13 @@ namespace webApiApp.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Cases> EditCase(long id, Cases editCase)
+        public async Task<ActionResult<Cases>> EditCase(long id, Cases editCase)
         {
-            var editableCase = _context.cases.Find(id);
+            var editableCase = await _context.cases.FindAsync(id);
             _context.cases.Update(editableCase).CurrentValues.SetValues(editCase);
 
             _context.SaveChanges();
-            
+
             return Ok();
         }
 
