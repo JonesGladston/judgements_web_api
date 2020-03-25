@@ -28,10 +28,10 @@ namespace webApiApp.Controllers
         {
             var caseDbSet = _context.cases;
             IQueryable<Cases> totalCases = caseDbSet.OrderBy(Case => Case.Id);
-
+            string _search = search.ToLower();
             if (search != "")
             {
-                totalCases = caseDbSet.Where(a => a.CaseNo.Contains(search) || a.CaseType.Contains(search) || a.FillingDate.ToString().Contains(search) || a.Judge.Contains(search))
+                totalCases = caseDbSet.Where(a => a.CaseNo.ToLower().Contains(_search) || a.CaseType.ToLower().Contains(_search) || a.FillingDate.ToString().Contains(_search) || a.Judge.ToLower().Contains(_search))
                     .OrderBy(Case => Case.Id);
             }
 
@@ -93,3 +93,4 @@ namespace webApiApp.Controllers
     }
 
 }
+    
