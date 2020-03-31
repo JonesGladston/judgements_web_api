@@ -48,10 +48,10 @@ namespace webApiApp.Models
                 case "CaseType_dsc":
                     totalCases = totalCases.OrderByDescending(Case => Case.CaseType);
                     break;
-                case "FillingDate_asc":
+                case "FilingDate_asc":
                     totalCases = totalCases.OrderBy(Case => Case.FillingDate);
                     break;
-                case "FillingDate_dsc":
+                case "FilingDate_dsc":
                     totalCases = totalCases.OrderByDescending(Case => Case.FillingDate);
                     break;
                 case "Judge_asc":
