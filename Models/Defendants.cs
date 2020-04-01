@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace webApiApp.Models
 {
@@ -14,5 +15,50 @@ namespace webApiApp.Models
         public int? CaseId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+    }
+
+    public class DefendantData
+    {
+        public long TotalCount { get; set; }
+
+        public List<Defendants> defendants { get; set; }
+    }
+
+    public class SortDefendants
+    {
+
+        public IQueryable<Defendants> Sort(string sort, IQueryable<Defendants> data)
+        {
+            IQueryable<Defendants> totalCases = data;
+            switch (sort)
+            {
+                case "CaseId_asc":
+                    totalCases = totalCases.OrderBy(Defandant => Defandant.CaseId);
+                    break;
+                case "CaseId_dsc":
+                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.CaseId);
+                    break;
+                case "FirstName_asc":
+                    totalCases = totalCases.OrderBy(Defandant => Defandant.FirstName);
+                    break;
+                case "FirstName_dsc":
+                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.FirstName);
+                    break;
+                case "LastName_asc":
+                    totalCases = totalCases.OrderBy(Defandant => Defandant.LastName);
+                    break;
+                case "LastName_dsc":
+                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.LastName);
+                    break;
+                case "Attorney_asc":
+                    totalCases = totalCases.OrderBy(Defandant => Defandant.Attorney);
+                    break;
+                case "Attorney_dsc":
+                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.Attorney);
+                    break;
+            }
+
+            return totalCases;
+        }
     }
 }

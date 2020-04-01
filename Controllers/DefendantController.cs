@@ -9,18 +9,34 @@ namespace webApiApp.Controllers
     [ApiController]
     public class DefendantController : ControllerBase
     {
-        private readonly judgement_dbContext _context;
+        private judgement_dbContext _context;
         public DefendantController(judgement_dbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public ActionResult<List<Defendants>> GetDefendants(int pageNumber = 1, int pageSize = 10)
+        public ActionResult<DefendantData> GetDefendants(string search = "", string sort = "", int pageNumber = 1, int pageSize = 10)
         {
-            return _context.Defendants.OrderBy(defendant => defendant.Id).Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-        }
+            var caseDbSet = _context.Defendants;
+            IQueryable<Defendants> totalDefendants = caseDbSet.OrderBy(Defendant => Defendant.Id);
+            string _search = search.ToLower();
+            if (search != "")
+            {
+                totalDefendants = caseDbSet.Where(a => a.CaseId.ToString().Contains(search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().ToString().Contains(_search) || a.Attorney.ToLower().Contains(_search))
+                    .OrderBy(Case => Case.Id);
+            }
 
+            if (sort != "")
+                totalDefendants = new SortDefendants().Sort(sort, totalDefendants);
+
+            var resultData = new DefendantData
+            {
+                TotalCount = caseDbSet.Count(),
+                defendants = totalDefendants.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+            };
+            return resultData;
+        }
 
         [HttpGet("{id}")]
         public ActionResult<Defendants> GetById(long id)
