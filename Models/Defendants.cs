@@ -33,28 +33,28 @@ namespace webApiApp.Models
             switch (sort)
             {
                 case "CaseId_asc":
-                    totalCases = totalCases.OrderBy(Defandant => Defandant.CaseId);
+                    totalCases = totalCases.OrderBy(Defendant => Defendant.CaseId);
                     break;
                 case "CaseId_dsc":
-                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.CaseId);
+                    totalCases = totalCases.OrderByDescending(Defendant => Defendant.CaseId);
                     break;
                 case "FirstName_asc":
-                    totalCases = totalCases.OrderBy(Defandant => Defandant.FirstName);
+                    totalCases = totalCases.OrderBy(Defendant => Defendant.FirstName);
                     break;
                 case "FirstName_dsc":
-                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.FirstName);
+                    totalCases = totalCases.OrderByDescending(Defendant => Defendant.FirstName);
                     break;
                 case "LastName_asc":
-                    totalCases = totalCases.OrderBy(Defandant => Defandant.LastName);
+                    totalCases = totalCases.OrderBy(Defendant => Defendant.LastName);
                     break;
                 case "LastName_dsc":
-                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.LastName);
+                    totalCases = totalCases.OrderByDescending(Defendant => Defendant.LastName);
                     break;
                 case "Attorney_asc":
-                    totalCases = totalCases.OrderBy(Defandant => Defandant.Attorney);
+                    totalCases = totalCases.OrderBy(Defendant => Defendant.Attorney);
                     break;
                 case "Attorney_dsc":
-                    totalCases = totalCases.OrderByDescending(Defandant => Defandant.Attorney);
+                    totalCases = totalCases.OrderByDescending(Defendant => Defendant.Attorney);
                     break;
             }
 
