@@ -9,7 +9,7 @@ namespace webApiApp.Controllers
     [ApiController]
     public class PlaintiffController : ControllerBase
     {
-        private readonly judgement_dbContext _context;
+        private judgement_dbContext _context;
         public PlaintiffController(judgement_dbContext context)
         {
             _context = context;
