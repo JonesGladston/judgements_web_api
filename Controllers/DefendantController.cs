@@ -18,13 +18,13 @@ namespace webApiApp.Controllers
         [HttpGet]
         public ActionResult<DefendantData> GetDefendants(string search = "", string sort = "", int pageNumber = 1, int pageSize = 10)
         {
-            var caseDbSet = _context.Defendants;
-            IQueryable<Defendants> totalDefendants = caseDbSet.OrderBy(Defendant => Defendant.Id);
+            var defendantDbSet = _context.Defendants;
+            IQueryable<Defendants> totalDefendants = defendantDbSet.OrderBy(Defendant => Defendant.Id);
             string _search = search.ToLower();
             if (search != "")
             {
-                totalDefendants = caseDbSet.Where(a => a.CaseId.ToString().Contains(search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().ToString().Contains(_search) || a.Attorney.ToLower().Contains(_search))
-                    .OrderBy(Case => Case.Id);
+                totalDefendants = defendantDbSet.Where(a => a.CaseId.ToString().Contains(search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().ToString().Contains(_search) || a.Attorney.ToLower().Contains(_search))
+                    .OrderBy(a => a.Id);
             }
 
             if (sort != "")
@@ -32,7 +32,7 @@ namespace webApiApp.Controllers
 
             var resultData = new DefendantData
             {
-                TotalCount = caseDbSet.Count(),
+                TotalCount = defendantDbSet.Count(),
                 defendants = totalDefendants.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
             };
             return resultData;

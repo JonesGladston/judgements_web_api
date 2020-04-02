@@ -18,13 +18,13 @@ namespace webApiApp.Controllers
         [HttpGet]
         public ActionResult<PlaintiffData> GetPlaintiffs(string search = "", string sort = "", int pageNumber = 1, int pageSize = 10)
         {
-            var caseDbSet = _context.Plaintiffs;
-            IQueryable<Plaintiffs> totalPlaintiffs = caseDbSet.OrderBy(Plaintiff => Plaintiff.Id);
+            var plaintiffDbSet = _context.Plaintiffs;
+            IQueryable<Plaintiffs> totalPlaintiffs = plaintiffDbSet.OrderBy(Plaintiff => Plaintiff.Id);
             string _search = search.ToLower();
             if (search != "")
             {
-                totalPlaintiffs = caseDbSet.Where(a => a.CaseId.ToString().ToLower().Contains(_search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().Contains(_search) || a.Attorney.ToLower().Contains(_search))
-                    .OrderBy(Case => Case.Id);
+                totalPlaintiffs = plaintiffDbSet.Where(a => a.CaseId.ToString().ToLower().Contains(_search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().Contains(_search) || a.Attorney.ToLower().Contains(_search))
+                    .OrderBy(a => a.Id);
             }
 
             if (sort != "")
@@ -32,7 +32,7 @@ namespace webApiApp.Controllers
 
             var resultData = new PlaintiffData
             {
-                TotalCount = caseDbSet.Count(),
+                TotalCount = plaintiffDbSet.Count(),
                 plaintiffs = totalPlaintiffs.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
             };
             return resultData;
