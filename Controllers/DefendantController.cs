@@ -23,7 +23,7 @@ namespace webApiApp.Controllers
             string _search = search.ToLower();
             if (search != "")
             {
-                totalDefendants = defendantDbSet.Where(a => a.CaseId.ToString().Contains(search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().ToString().Contains(_search) || a.Attorney.ToLower().Contains(_search))
+                totalDefendants = defendantDbSet.Where(a => a.CaseId.ToString().ToLower().Contains(_search) || a.FirstName.ToLower().Contains(_search) || a.LastName.ToLower().Contains(_search) || a.Attorney.ToLower().Contains(_search))
                     .OrderBy(a => a.Id);
             }
 
